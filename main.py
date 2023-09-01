@@ -139,7 +139,7 @@ def job():
 if __name__ == "__main__":
     while True:
         random_number = random.randint(0, 100)
-        if random_number < 50:
+        if random_number < 40:
             print("Job running...")
             job()
-        time.sleep(10)
+        time.sleep(3600 * 6)
