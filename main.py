@@ -2,6 +2,8 @@ import os
 import re
 import json
 import openai
+import time
+import random
 from dotenv import load_dotenv
 import git
 
@@ -122,12 +124,22 @@ def commit_and_push(repo, commit_message):
     repo.git.push()
 
 
-subject = get_subject()
-if subject:
-    code = get_code_from_subject(subject)
-    if code:
-        save_code_to_file(subject, code)
-        project_dir = os.getcwd()
-        repo = git.Repo(project_dir)
-        commit_and_push(repo, subject)
-        print("Successfully committed and pushed to GitHub!")
+def job():
+    subject = get_subject()
+    if subject:
+        code = get_code_from_subject(subject)
+        if code:
+            save_code_to_file(subject, code)
+            project_dir = os.getcwd()
+            repo = git.Repo(project_dir)
+            commit_and_push(repo, subject)
+            print("Successfully committed and pushed to GitHub!")
+
+
+if __name__ == "__main__":
+    while True:
+        random_number = random.randint(0, 100)
+        if random_number < 50:
+            print("Job running...")
+            job()
+        time.sleep(10)
