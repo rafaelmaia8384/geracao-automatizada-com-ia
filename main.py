@@ -129,3 +129,5 @@ if subject:
         save_code_to_file(subject, code)
         project_dir = os.getcwd()
         repo = git.Repo(project_dir)
+        commit_and_push(repo, subject)
+        print("Successfully committed and pushed to GitHub!")
