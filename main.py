@@ -134,6 +134,8 @@ def job():
             repo = git.Repo(project_dir)
             commit_and_push(repo, subject)
             print("Successfully committed and pushed to GitHub!")
+            return
+    print("Something went wrong!")
 
 
 if __name__ == "__main__":
@@ -142,4 +144,6 @@ if __name__ == "__main__":
         if random_number < 40:
             print("Job running...")
             job()
+        else:
+            print("Not now!")
         time.sleep(3600 * 6)
