@@ -138,12 +138,17 @@ def job():
     print("Something went wrong!")
 
 
+wait_time_seconds = 3600 * 8
+
+
 if __name__ == "__main__":
+    wait_hours = wait_time_seconds / 3600
     while True:
+        print(f"Next job in {wait_hours} hours...")
+        time.sleep(wait_time_seconds)
         random_number = random.randint(0, 100)
         if random_number < 40:
             print("Job running...")
             job()
         else:
             print("Not now!")
-        time.sleep(3600 * 6)
